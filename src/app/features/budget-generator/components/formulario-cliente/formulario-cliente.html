@@ -1,0 +1,15 @@
+<form (submit)="alEnviar($event, nombreInput.value, emailInput.value, telefonoInput.value)">
+  <label for="nombre">Nombre y apellidos</label>
+  <input type="text" id="nombre" #nombreInput>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" #emailInput>
+
+  <label for="telefono">Teléfono</label>
+  <input type="tel" id="telefono" #telefonoInput>
+
+  <button type="submit">Generar presupuesto</button>
+</form>
+@if (presupuestoGenerado) {
+  <p>Presupuesto generado con id {{ presupuestoGenerado.id }}. Total: {{ presupuestoGenerado.total }} €</p>
+}
