@@ -1,0 +1,15 @@
+<button (click)="alHacerClicVolver()">← Volver al listado</button>
+
+<h2>Presupuesto #{{ presupuesto().id }}</h2>
+<p>Cliente: {{ presupuesto().nombre }}</p>
+<p>Email: {{ presupuesto().email }}</p>
+<p>Teléfono: {{ presupuesto().telefono }}</p>
+<p>Fecha: {{ presupuesto().fecha | date }}</p>
+
+<ul>
+  @for (registro of presupuesto().servicios; track registro.nombre) {
+    <li>{{ registro.nombre }} — {{ registro.precio }} €</li>
+  }
+</ul>
+
+<p>Total: {{ presupuesto().total }} €</p>
