@@ -11,6 +11,7 @@ export class TarjetaServicio {
   servicio = input.required<ServicioPresupuestable>();
   seleccionar = output<void>();
   seleccionado = input<boolean>(false);
+  sinEsquinaInferior = input<boolean>(false);
 
   alHacerClic() {
     this.seleccionar.emit();

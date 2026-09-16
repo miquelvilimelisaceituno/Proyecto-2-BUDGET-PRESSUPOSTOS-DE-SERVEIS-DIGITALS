@@ -1,13 +1,33 @@
 @if (presupuestoSeleccionado(); as presupuesto) {
   <app-detalle-presupuesto [presupuesto]="presupuesto" (volver)="alVolver()"></app-detalle-presupuesto>
 } @else {
-  <input type="text" placeholder="Buscar por nombre..." (input)="alBuscar($event)">
+  <div class="space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <h2 class="text-lg font-bold text-neutral-900">Pressupostos en curs:</h2>
 
-  @if (presupuestosFiltrados().length === 0) {
-    <p>No hay presupuestos que coincidan con la búsqueda.</p>
-  } @else {
-    @for (presupuesto of presupuestosFiltrados(); track presupuesto.id) {
-      <app-tarjeta-presupuesto [presupuesto]="presupuesto" (verDetalle)="alSeleccionar(presupuesto)"></app-tarjeta-presupuesto>
+      <div class="flex items-center gap-4">
+        <div class="relative">
+          <input type="text" placeholder="Buscar per nom..." (input)="alBuscar($event)"
+            class="w-48 rounded-full border border-neutral-200 py-1.5 pr-8 pl-4 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
+          <span class="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-neutral-400">⌕</span>
+        </div>
+
+        <div class="flex items-center gap-3 text-sm text-neutral-400">
+          <button type="button" class="hover:text-neutral-600">Data</button>
+          <button type="button" class="font-semibold text-neutral-900">Import ▾</button>
+          <button type="button" class="hover:text-neutral-600">Nom</button>
+        </div>
+      </div>
+    </div>
+
+    @if (presupuestosFiltrados().length === 0) {
+      <p class="text-sm text-neutral-400">No hay presupuestos que coincidan con la búsqueda.</p>
+    } @else {
+      <div class="space-y-3">
+        @for (presupuesto of presupuestosFiltrados(); track presupuesto.id) {
+          <app-tarjeta-presupuesto [presupuesto]="presupuesto" (verDetalle)="alSeleccionar(presupuesto)"></app-tarjeta-presupuesto>
+        }
+      </div>
     }
-  }
+  </div>
 }

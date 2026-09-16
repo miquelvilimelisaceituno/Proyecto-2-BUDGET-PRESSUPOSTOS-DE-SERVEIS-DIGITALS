@@ -1,19 +1,28 @@
-<app-tarjeta-servicio 
-    [servicio]="seo" 
-    [seleccionado]="estaSeleccionado(seo)" 
-    (seleccionar)="alSeleccionar(seo)">
-</app-tarjeta-servicio>
-<app-tarjeta-servicio 
-    [servicio]="publicidad" 
-    [seleccionado]="estaSeleccionado(publicidad)" 
-    (seleccionar)="alSeleccionar(publicidad)">
-</app-tarjeta-servicio>
-<app-tarjeta-servicio 
-    [servicio]="web" 
-    [seleccionado]="estaSeleccionado(web)" 
-    (seleccionar)="alSeleccionar(web)">
-</app-tarjeta-servicio>
-@if (estaSeleccionado(web)){
+<div class="space-y-3">
+  <app-tarjeta-servicio
+      [servicio]="seo"
+      [seleccionado]="estaSeleccionado(seo)"
+      (seleccionar)="alSeleccionar(seo)">
+  </app-tarjeta-servicio>
+
+  <app-tarjeta-servicio
+      [servicio]="publicidad"
+      [seleccionado]="estaSeleccionado(publicidad)"
+      (seleccionar)="alSeleccionar(publicidad)">
+  </app-tarjeta-servicio>
+
+  <app-tarjeta-servicio
+      [servicio]="web"
+      [seleccionado]="estaSeleccionado(web)"
+      [sinEsquinaInferior]="estaSeleccionado(web)"
+      (seleccionar)="alSeleccionar(web)">
+  </app-tarjeta-servicio>
+
+  @if (estaSeleccionado(web)) {
     <app-configurador-web [web]="web"></app-configurador-web>
-}
-<p>{{ total() }}</p>
+  }
+
+  <p class="pt-4 text-right text-lg font-bold text-neutral-900">
+    Preu pressupostat: <span class="text-2xl">{{ total() }} €</span>
+  </p>
+</div>

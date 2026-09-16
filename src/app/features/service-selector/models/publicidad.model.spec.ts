@@ -1,4 +1,4 @@
-import { Publicidad } from './publicidadmodel';
+import { Publicidad } from './publicidad.model';
 
 describe('Publicidad', () => {
   it('should create an instance', () => {

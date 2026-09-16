@@ -1,4 +1,4 @@
-import { Seo } from './seomodel';
+import { Seo } from './seo.model';
 
 describe('Seo', () => {
   it('should create an instance', () => {

@@ -1,7 +1,7 @@
-import { Web } from './webmodel';
+import { Web } from './web.model';
 
 describe('Web', () => {
   it('should create an instance', () => {
-    expect(new Web()).toBeTruthy();
+    expect(new Web(0,0)).toBeTruthy();
   });
 });

@@ -1,15 +1,31 @@
-<form (submit)="alEnviar($event, nombreInput.value, emailInput.value, telefonoInput.value)">
-  <label for="nombre">Nombre y apellidos</label>
-  <input type="text" id="nombre" #nombreInput>
+<div class="rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm">
+  <h2 class="mb-4 text-lg font-bold text-neutral-900">Demanar pressupost</h2>
 
-  <label for="email">Email</label>
-  <input type="email" id="email" #emailInput>
+  <form
+    class="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_1fr_1fr_auto]"
+    (submit)="alEnviar($event, nombreInput.value, emailInput.value, telefonoInput.value)"
+  >
+    <label for="nombre" class="sr-only">Nom i cognoms</label>
+    <input type="text" id="nombre" #nombreInput placeholder="Nom"
+      class="rounded-lg border border-neutral-200 px-4 py-2 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
 
-  <label for="telefono">Teléfono</label>
-  <input type="tel" id="telefono" #telefonoInput>
+    <label for="telefono" class="sr-only">Telèfon</label>
+    <input type="tel" id="telefono" #telefonoInput placeholder="Telèfon"
+      class="rounded-lg border border-neutral-200 px-4 py-2 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
 
-  <button type="submit">Generar presupuesto</button>
-</form>
-@if (presupuestoGenerado) {
-  <p>Presupuesto generado con id {{ presupuestoGenerado.id }}. Total: {{ presupuestoGenerado.total }} €</p>
-}
+    <label for="email" class="sr-only">Email</label>
+    <input type="email" id="email" #emailInput placeholder="Email"
+      class="rounded-lg border border-neutral-200 px-4 py-2 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
+
+    <button type="submit"
+      class="rounded-full bg-emerald-600 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-700">
+      Sol·licitar pressupost →
+    </button>
+  </form>
+
+  @if (presupuestoGenerado) {
+    <p class="mt-4 text-sm text-neutral-500">
+      Presupuesto generado con id {{ presupuestoGenerado.id }}. Total: {{ presupuestoGenerado.total }} €
+    </p>
+  }
+</div>

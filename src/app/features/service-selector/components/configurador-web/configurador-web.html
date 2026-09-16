@@ -1,3 +1,21 @@
+<div class="-mt-[2px] space-y-3 rounded-b-2xl border-2 border-t-0 border-emerald-500 bg-white px-6 pt-3 pb-6">
 
-<input type="number" [value]="web().idiomas" (input)="alCambiarIdiomas($event)">
-<input type="number" [value]="web().paginas" (input)="alCambiarPaginas($event)">
+  <div class="flex items-center justify-between">
+    <span class="text-sm text-neutral-500">Número de pàgines:</span>
+    <div class="flex items-center gap-3">
+      <button type="button" (click)="decrementarPaginas()" class="h-6 w-6 rounded-full border border-neutral-300 text-neutral-500 hover:bg-neutral-50">−</button>
+      <span class="w-6 text-center font-semibold">{{ web().paginas }}</span>
+      <button type="button" (click)="incrementarPaginas()" class="h-6 w-6 rounded-full border border-neutral-300 text-neutral-500 hover:bg-neutral-50">+</button>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-between">
+    <span class="text-sm text-neutral-500">Número de llenguatges:</span>
+    <div class="flex items-center gap-3">
+      <button type="button" (click)="decrementarIdiomas()" class="h-6 w-6 rounded-full border border-neutral-300 text-neutral-500 hover:bg-neutral-50">−</button>
+      <span class="w-6 text-center font-semibold">{{ web().idiomas }}</span>
+      <button type="button" (click)="incrementarIdiomas()" class="h-6 w-6 rounded-full border border-neutral-300 text-neutral-500 hover:bg-neutral-50">+</button>
+    </div>
+  </div>
+
+</div>

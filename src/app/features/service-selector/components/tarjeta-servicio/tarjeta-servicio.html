@@ -1,1 +1,26 @@
-<button (click)="alHacerClic()">{{ servicio().nombre }} -- {{ servicio().obtenerPrecio()}}</button>
+<button
+  type="button"
+  (click)="alHacerClic()"
+  class="w-full rounded-2xl border-2 bg-white px-6 py-5 text-left transition-colors flex items-center justify-between gap-6"
+  [class.border-emerald-500]="seleccionado()"
+  [class.border-transparent]="!seleccionado()"
+  [class.shadow-sm]="!seleccionado()"
+  [class.rounded-b-none]="sinEsquinaInferior()"
+  [class.border-b-0]="sinEsquinaInferior()"
+>
+  <div>
+    <h3 class="font-bold text-neutral-900">{{ servicio().nombre }}</h3>
+    <p class="text-sm text-neutral-400">Programació d'una web responsive completa</p>
+  </div>
+
+  <div class="flex shrink-0 items-center gap-8">
+    <span class="text-2xl font-extrabold text-neutral-900">
+      {{ servicio().obtenerPrecio() }}<span class="align-top text-base font-semibold">€</span>
+    </span>
+
+    <span class="flex items-center gap-2 text-sm text-neutral-500">
+      <input type="checkbox" [checked]="seleccionado()" readonly class="pointer-events-none h-4 w-4 rounded accent-emerald-600">
+      Afegir
+    </span>
+  </div>
+</button>

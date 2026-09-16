@@ -8,16 +8,18 @@ import { Web } from '../../models/web.model';
   templateUrl: './configurador-web.html',
 })
 export class ConfiguradorWeb {
-  web = input.required<Web>(); //se llama "web" porque recibe la instancia completa de web
+  web = input.required<Web>(); 
   
-  alCambiarIdiomas(evento: Event): void {
-    const idiomas = evento.target as HTMLInputElement;
-    const numeroIdiomas = idiomas.valueAsNumber;
-    this.web().idiomas = numeroIdiomas;
-}
-  alCambiarPaginas(evento: Event): void {
-    const paginas = evento.target as HTMLInputElement;
-    const numeroPaginas = paginas.valueAsNumber;
-    this.web().paginas = numeroPaginas;
-}
+  incrementarPaginas(): void {
+    this.web().paginas++;
+  }
+  decrementarPaginas(): void {
+    if (this.web().paginas > 0) this.web().paginas--;
+  }
+  incrementarIdiomas(): void {
+    this.web().idiomas++;
+  }
+  decrementarIdiomas(): void {
+    if (this.web().idiomas > 0) this.web().idiomas--;
+  }
 }
