@@ -1,0 +1,13 @@
+@if (presupuestoSeleccionado(); as presupuesto) {
+  <app-detalle-presupuesto [presupuesto]="presupuesto" (volver)="alVolver()"></app-detalle-presupuesto>
+} @else {
+  <input type="text" placeholder="Buscar por nombre..." (input)="alBuscar($event)">
+
+  @if (presupuestosFiltrados().length === 0) {
+    <p>No hay presupuestos que coincidan con la búsqueda.</p>
+  } @else {
+    @for (presupuesto of presupuestosFiltrados(); track presupuesto.id) {
+      <app-tarjeta-presupuesto [presupuesto]="presupuesto" (verDetalle)="alSeleccionar(presupuesto)"></app-tarjeta-presupuesto>
+    }
+  }
+}
