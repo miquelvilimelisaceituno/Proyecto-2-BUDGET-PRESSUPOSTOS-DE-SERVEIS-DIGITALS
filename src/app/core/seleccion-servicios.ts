@@ -17,7 +17,7 @@ export class SeleccionServicios {
     }
 
     obtenerSeleccionados(): ServicioPresupuestable[]  {
-        return [...this.seleccionados] //spread oparator para "proteger" el array original de cambios externos
+        return [...this.seleccionados] 
     }
 
     consultarPrecioTotal(): number {
