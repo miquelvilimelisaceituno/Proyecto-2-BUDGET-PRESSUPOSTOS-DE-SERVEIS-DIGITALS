@@ -22,6 +22,6 @@ export class RepositorioPresupuestosLocalStorage extends RepositorioPresupuestos
         const listaPresupuestos = this.listar();
         listaPresupuestos.push(presupuesto);
         localStorage.setItem(this.claveAlmacenamiento, JSON.stringify(listaPresupuestos)) 
-        // no necesita return porque su tipo es void
+       
     }
 }
