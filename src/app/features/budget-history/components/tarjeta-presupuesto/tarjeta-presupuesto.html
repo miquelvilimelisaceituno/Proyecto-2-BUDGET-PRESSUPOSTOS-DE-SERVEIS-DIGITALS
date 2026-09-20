@@ -1,19 +1,21 @@
-<button
-  type="button"
-  (click)="alHacerClic()"
-  class="flex w-full items-center justify-between gap-6 rounded-2xl border border-neutral-100 bg-white px-6 py-5 text-left shadow-sm transition-shadow hover:shadow-md"
+<article
+  class="relative flex w-full items-center justify-between gap-6 rounded-2xl border border-neutral-100 bg-white px-6 py-5 shadow-sm transition-shadow hover:shadow-md has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-emerald-600"
 >
   <div>
-    <p class="font-bold text-neutral-900">{{ presupuesto().nombre }}</p>
+    <h3 class="font-bold text-neutral-900">
+      <button type="button" (click)="alHacerClic()" class="cursor-pointer after:absolute after:inset-0">
+        {{ presupuesto().nombre || 'Client sense nom' }}
+      </button>
+    </h3>
     <p class="text-sm text-neutral-400">{{ presupuesto().email }}</p>
     <p class="text-sm text-neutral-400">{{ presupuesto().telefono }}</p>
   </div>
 
   <div class="text-sm text-neutral-500">
     <p class="mb-1 font-semibold text-neutral-700">Serveis contractats:</p>
-    <ul>
+    <ul class="list-inside list-disc">
       @for (servicio of presupuesto().servicios; track servicio.nombre) {
-        <li>· {{ servicio.nombre }}</li>
+        <li>{{ servicio.nombre }}</li>
       }
     </ul>
   </div>
@@ -22,4 +24,4 @@
     <p class="text-sm text-neutral-400">Total:</p>
     <p class="text-xl font-extrabold text-neutral-900">{{ presupuesto().total }}<span class="text-sm font-semibold">€</span></p>
   </div>
-</button>
+</article>
