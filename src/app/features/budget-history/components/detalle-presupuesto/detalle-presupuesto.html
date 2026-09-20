@@ -1,19 +1,31 @@
 <div class="space-y-6">
   <button type="button" (click)="alHacerClicVolver()" class="text-sm font-medium text-neutral-500 hover:text-neutral-800">
-    ← Volver al listado
+    <span aria-hidden="true">←</span> Tornar al llistat
   </button>
 
-  <div class="rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm">
-    <h2 class="text-lg font-bold text-neutral-900">Presupuesto #{{ presupuesto().id }}</h2>
+  <article class="rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm">
+        <h2 #titulo tabindex="-1" class="text-lg font-bold text-neutral-900 focus:outline-none">Pressupost #{{ presupuesto().id }}</h2>
 
-    <div class="mt-4 grid grid-cols-1 gap-1 text-sm text-neutral-500 sm:grid-cols-3">
-      <p><span class="font-semibold text-neutral-700">Cliente:</span> {{ presupuesto().nombre }}</p>
-      <p><span class="font-semibold text-neutral-700">Email:</span> {{ presupuesto().email }}</p>
-      <p><span class="font-semibold text-neutral-700">Teléfono:</span> {{ presupuesto().telefono }}</p>
-    </div>
-    <p class="mt-1 text-sm text-neutral-400">{{ presupuesto().fecha | date }}</p>
+    <dl class="mt-4 grid grid-cols-1 gap-1 text-sm text-neutral-500 sm:grid-cols-3">
+      <div class="flex gap-1">
+        <dt class="font-semibold text-neutral-700">Client:</dt>
+        <dd>{{ presupuesto().nombre }}</dd>
+      </div>
+      <div class="flex gap-1">
+        <dt class="font-semibold text-neutral-700">Email:</dt>
+        <dd>{{ presupuesto().email }}</dd>
+      </div>
+      <div class="flex gap-1">
+        <dt class="font-semibold text-neutral-700">Telèfon:</dt>
+        <dd>{{ presupuesto().telefono }}</dd>
+      </div>
+    </dl>
 
-    <ul class="mt-6 divide-y divide-neutral-100 border-t border-neutral-100">
+    <p class="mt-1 text-sm text-neutral-400">
+      <time [attr.datetime]="presupuesto().fecha | date: 'yyyy-MM-dd'">{{ presupuesto().fecha | date }}</time>
+    </p>
+
+    <ul role="list" aria-label="Serveis contractats" class="mt-6 divide-y divide-neutral-100 border-t border-neutral-100">
       @for (registro of presupuesto().servicios; track registro.nombre) {
         <li class="flex items-center justify-between py-3 text-sm text-neutral-600">
           <span>{{ registro.nombre }}</span>
@@ -25,5 +37,5 @@
     <p class="mt-4 text-right text-lg font-bold text-neutral-900">
       Total: <span class="text-2xl">{{ presupuesto().total }} €</span>
     </p>
-  </div>
+  </article>
 </div>
