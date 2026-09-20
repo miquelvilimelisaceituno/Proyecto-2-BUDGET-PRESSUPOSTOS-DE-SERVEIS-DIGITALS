@@ -1,7 +1,7 @@
-<button
-  type="button"
-  (click)="alHacerClic()"
-  class="w-full rounded-2xl border-2 bg-white px-6 py-5 text-left transition-colors flex items-center justify-between gap-6"
+@let id = 'servicio-' + servicio().nombre;
+
+<div
+  class="relative flex w-full items-center justify-between gap-6 rounded-2xl border-2 bg-white px-6 py-5 transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-emerald-600"
   [class.border-emerald-500]="seleccionado()"
   [class.border-transparent]="!seleccionado()"
   [class.shadow-sm]="!seleccionado()"
@@ -9,18 +9,29 @@
   [class.border-b-0]="sinEsquinaInferior()"
 >
   <div>
-    <h3 class="font-bold text-neutral-900">{{ servicio().nombre }}</h3>
+    <h3 class="font-bold text-neutral-900">
+      <label [for]="id" class="cursor-pointer after:absolute after:inset-0">
+        {{ servicio().nombre }}
+      </label>
+    </h3>
     <p class="text-sm text-neutral-400">Programació d'una web responsive completa</p>
   </div>
 
   <div class="flex shrink-0 items-center gap-8">
-    <span class="text-2xl font-extrabold text-neutral-900">
+    <span [id]="id + '-precio'" class="text-2xl font-extrabold text-neutral-900">
       {{ servicio().obtenerPrecio() }}<span class="align-top text-base font-semibold">€</span>
     </span>
 
     <span class="flex items-center gap-2 text-sm text-neutral-500">
-      <input type="checkbox" [checked]="seleccionado()" readonly class="pointer-events-none h-4 w-4 rounded accent-emerald-600">
-      Afegir
+      <input
+        type="checkbox"
+        [id]="id"
+        [checked]="seleccionado()"
+        (change)="alHacerClic()"
+        [attr.aria-describedby]="id + '-precio'"
+        class="h-4 w-4 rounded accent-emerald-600"
+      >
+      <span aria-hidden="true">Afegir</span>
     </span>
   </div>
-</button>
+</div>

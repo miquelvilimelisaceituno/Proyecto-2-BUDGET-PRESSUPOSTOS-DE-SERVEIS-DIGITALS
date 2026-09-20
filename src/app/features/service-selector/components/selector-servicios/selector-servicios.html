@@ -1,28 +1,32 @@
-<div class="space-y-3">
-  <app-tarjeta-servicio
+<section class="space-y-3" aria-labelledby="titulo-selector">
+  <h2 id="titulo-selector" class="sr-only">Configura el teu pressupost</h2>
+
+  <fieldset class="min-w-0 space-y-3">
+    <legend class="sr-only">Serveis a pressupostar</legend>
+    <app-tarjeta-servicio
       [servicio]="seo"
       [seleccionado]="estaSeleccionado(seo)"
       (seleccionar)="alSeleccionar(seo)">
-  </app-tarjeta-servicio>
+    </app-tarjeta-servicio>
 
-  <app-tarjeta-servicio
+    <app-tarjeta-servicio
       [servicio]="publicidad"
       [seleccionado]="estaSeleccionado(publicidad)"
       (seleccionar)="alSeleccionar(publicidad)">
-  </app-tarjeta-servicio>
+    </app-tarjeta-servicio>
 
-  <app-tarjeta-servicio
+    <app-tarjeta-servicio
       [servicio]="web"
       [seleccionado]="estaSeleccionado(web)"
       [sinEsquinaInferior]="estaSeleccionado(web)"
       (seleccionar)="alSeleccionar(web)">
-  </app-tarjeta-servicio>
+    </app-tarjeta-servicio>
 
-  @if (estaSeleccionado(web)) {
-    <app-configurador-web [web]="web"></app-configurador-web>
-  }
-
-  <p class="pt-4 text-right text-lg font-bold text-neutral-900">
+    @if (estaSeleccionado(web)) {
+      <app-configurador-web [web]="web"></app-configurador-web>
+    }
+  </fieldset>
+  <output class="block pt-4 text-right text-lg font-bold text-neutral-900">
     Preu pressupostat: <span class="text-2xl">{{ total() }} €</span>
-  </p>
-</div>
+  </output>
+</section>
