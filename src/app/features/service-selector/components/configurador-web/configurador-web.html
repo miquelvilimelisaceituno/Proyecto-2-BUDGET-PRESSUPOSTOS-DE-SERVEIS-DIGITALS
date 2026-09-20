@@ -1,21 +1,43 @@
-<div class="-mt-[2px] space-y-3 rounded-b-2xl border-2 border-t-0 border-emerald-500 bg-white px-6 pt-3 pb-6">
+<fieldset class="-mt-[2px] min-w-0 space-y-3 rounded-b-2xl border-2 border-t-0 border-emerald-500 bg-white px-6 pt-3 pb-6">
+  <legend class="sr-only">Configuració de la web</legend>
 
   <div class="flex items-center justify-between">
-    <span class="text-sm text-neutral-500">Número de pàgines:</span>
+    <label for="web-paginas" class="text-sm text-neutral-500">Número de pàgines:</label>
     <div class="flex items-center gap-3">
-      <button type="button" (click)="decrementarPaginas()" class="h-6 w-6 rounded-full border border-neutral-300 text-neutral-500 hover:bg-neutral-50">−</button>
-      <span class="w-6 text-center font-semibold">{{ web().paginas }}</span>
-      <button type="button" (click)="incrementarPaginas()" class="h-6 w-6 rounded-full border border-neutral-300 text-neutral-500 hover:bg-neutral-50">+</button>
+      <button
+        type="button"
+        (click)="decrementarPaginas()"
+        aria-label="Reduir el nombre de pàgines"
+        [attr.aria-disabled]="web().paginas === 0"
+        class="h-6 w-6 rounded-full border border-neutral-300 text-neutral-500 hover:bg-neutral-50 aria-disabled:cursor-not-allowed aria-disabled:opacity-40"
+      >−</button>
+      <output id="web-paginas" class="w-6 text-center font-semibold">{{ web().paginas }}</output>
+      <button
+        type="button"
+        (click)="incrementarPaginas()"
+        aria-label="Augmentar el nombre de pàgines"
+        class="h-6 w-6 rounded-full border border-neutral-300 text-neutral-500 hover:bg-neutral-50"
+      >+</button>
     </div>
   </div>
 
   <div class="flex items-center justify-between">
-    <span class="text-sm text-neutral-500">Número de llenguatges:</span>
+    <label for="web-idiomas" class="text-sm text-neutral-500">Número de llenguatges:</label>
     <div class="flex items-center gap-3">
-      <button type="button" (click)="decrementarIdiomas()" class="h-6 w-6 rounded-full border border-neutral-300 text-neutral-500 hover:bg-neutral-50">−</button>
-      <span class="w-6 text-center font-semibold">{{ web().idiomas }}</span>
-      <button type="button" (click)="incrementarIdiomas()" class="h-6 w-6 rounded-full border border-neutral-300 text-neutral-500 hover:bg-neutral-50">+</button>
+      <button
+        type="button"
+        (click)="decrementarIdiomas()"
+        aria-label="Reduir el nombre de llenguatges"
+        [attr.aria-disabled]="web().idiomas === 0"
+        class="h-6 w-6 rounded-full border border-neutral-300 text-neutral-500 hover:bg-neutral-50 aria-disabled:cursor-not-allowed aria-disabled:opacity-40"
+      >−</button>
+      <output id="web-idiomas" class="w-6 text-center font-semibold">{{ web().idiomas }}</output>
+      <button
+        type="button"
+        (click)="incrementarIdiomas()"
+        aria-label="Augmentar el nombre de llenguatges"
+        class="h-6 w-6 rounded-full border border-neutral-300 text-neutral-500 hover:bg-neutral-50"
+      >+</button>
     </div>
   </div>
-
-</div>
+</fieldset>
