@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, ElementRef, afterNextRender, viewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Presupuesto } from '../../../../shared/models/presupuesto.model';
 
@@ -11,6 +11,12 @@ import { Presupuesto } from '../../../../shared/models/presupuesto.model';
 export class DetallePresupuesto {
   presupuesto = input.required<Presupuesto>();
   volver = output<void>();
+
+  private titulo = viewChild.required<ElementRef<HTMLElement>>('titulo');
+
+  constructor() {
+    afterNextRender(() => this.titulo().nativeElement.focus());
+  }
 
   alHacerClicVolver(): void {
     this.volver.emit();
