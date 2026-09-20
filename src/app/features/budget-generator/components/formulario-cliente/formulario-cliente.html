@@ -1,31 +1,31 @@
-<div class="rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm">
-  <h2 class="mb-4 text-lg font-bold text-neutral-900">Demanar pressupost</h2>
+<section class="rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm" aria-labelledby="titulo-formulario">
+  <h2 id="titulo-formulario" class="mb-4 text-lg font-bold text-neutral-900">Demanar pressupost</h2>
 
   <form
     class="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_1fr_1fr_auto]"
     (submit)="alEnviar($event, nombreInput.value, emailInput.value, telefonoInput.value)"
   >
     <label for="nombre" class="sr-only">Nom i cognoms</label>
-    <input type="text" id="nombre" #nombreInput placeholder="Nom"
+    <input type="text" id="nombre" name="nombre" autocomplete="name" #nombreInput placeholder="Nom"
       class="rounded-lg border border-neutral-200 px-4 py-2 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
 
     <label for="telefono" class="sr-only">Telèfon</label>
-    <input type="tel" id="telefono" #telefonoInput placeholder="Telèfon"
+    <input type="tel" id="telefono" name="telefono" autocomplete="tel" #telefonoInput placeholder="Telèfon"
       class="rounded-lg border border-neutral-200 px-4 py-2 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
 
     <label for="email" class="sr-only">Email</label>
-    <input type="email" id="email" #emailInput placeholder="Email"
+    <input type="email" id="email" name="email" autocomplete="email" #emailInput placeholder="Email"
       class="rounded-lg border border-neutral-200 px-4 py-2 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
 
     <button type="submit"
       class="rounded-full bg-emerald-600 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-700">
-      Sol·licitar pressupost →
+      Sol·licitar pressupost <span aria-hidden="true">→</span>
     </button>
   </form>
 
-  @if (presupuestoGenerado) {
-    <p class="mt-4 text-sm text-neutral-500">
-      Presupuesto generado con id {{ presupuestoGenerado.id }}. Total: {{ presupuestoGenerado.total }} €
-    </p>
-  }
-</div>
+  <output class="block text-sm text-neutral-500" [class.mt-4]="!!presupuestoGenerado">
+    @if (presupuestoGenerado) {
+      Pressupost generat amb id {{ presupuestoGenerado.id }}. Total: {{ presupuestoGenerado.total }} €
+    }
+  </output>
+</section>
