@@ -6,10 +6,11 @@ import { Web } from '../../models/web.model';
 import { ServicioPresupuestable } from '../../models/servicio-presupuestable.model';
 import { TarjetaServicio } from '../tarjeta-servicio/tarjeta-servicio';
 import { ConfiguradorWeb } from '../configurador-web/configurador-web'
+import { AvisoWeb } from '../aviso-web/aviso-web';
 
 
 @Component({
-  imports: [TarjetaServicio, ConfiguradorWeb],
+  imports: [TarjetaServicio, ConfiguradorWeb, AvisoWeb],
   selector: 'app-selector-servicios',
   styleUrl: './selector-servicios.css',
   templateUrl: './selector-servicios.html',
