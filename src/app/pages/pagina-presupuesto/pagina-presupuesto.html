@@ -1,0 +1,5 @@
+@if (presupuesto(); as encontrado) {
+  <app-detalle-presupuesto [presupuesto]="encontrado" (volver)="alVolver()"></app-detalle-presupuesto>
+} @else {
+  <p class="text-sm text-neutral-400">No s'ha trobat el pressupost</p>
+}
