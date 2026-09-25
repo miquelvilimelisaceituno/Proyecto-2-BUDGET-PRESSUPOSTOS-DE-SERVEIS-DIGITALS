@@ -1,38 +1,50 @@
-@if (presupuestoSeleccionado(); as presupuesto) {
-  <app-detalle-presupuesto [presupuesto]="presupuesto" (volver)="alVolver()"></app-detalle-presupuesto>
-} @else {
-  <section class="space-y-4" aria-labelledby="titulo-historial">
-    <output class="sr-only">Pressupostos trobats: {{ presupuestosFiltrados().length }}</output>
+<section class="space-y-4" aria-labelledby="titulo-historial">
+  <output class="sr-only">Pressupostos trobats: {{ presupuestosFiltrados().length }}</output>
 
-    <div class="flex flex-wrap items-center justify-between gap-3">
-            <h2 #titulo id="titulo-historial" tabindex="-1" class="text-lg font-bold text-neutral-900 focus:outline-none">Pressupostos en curs</h2>
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <h2 id="titulo-historial" class="text-lg font-bold text-neutral-900">Pressupostos en curs</h2>
 
-      <div class="flex items-center gap-4">
-        <div role="search" class="relative">
-          <label for="buscador" class="sr-only">Buscar pressupostos per nom</label>
-          <input type="search" id="buscador" name="busqueda" placeholder="Buscar per nom..." (input)="alBuscar($event)"
-            class="w-48 rounded-full border border-neutral-200 py-1.5 pr-8 pl-4 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
-          <span aria-hidden="true" class="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-neutral-400">⌕</span>
-        </div>
+    <div class="flex items-center gap-4">
+      <div role="search" class="relative">
+        <label for="buscador" class="sr-only">Buscar pressupostos per nom</label>
+        <input
+          type="search"
+          id="buscador"
+          name="busqueda"
+          placeholder="Buscar per nom..."
+          (input)="alBuscar($event)"
+          class="w-48 rounded-full border border-neutral-200 py-1.5 pr-8 pl-4 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none"
+        />
+        <span
+          aria-hidden="true"
+          class="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-neutral-400"
+          >⌕</span
+        >
+      </div>
 
-        <div role="group" aria-label="Ordenar per" class="flex items-center gap-3 text-sm text-neutral-400">
-          <button type="button" disabled>Data</button>
-          <button type="button" disabled class="font-semibold text-neutral-900">Import <span aria-hidden="true">▾</span></button>
-          <button type="button" disabled>Nom</button>
-        </div>
+      <div
+        role="group"
+        aria-label="Ordenar per"
+        class="flex items-center gap-3 text-sm text-neutral-400"
+      >
+        <button type="button" disabled>Data</button>
+        <button type="button" disabled class="font-semibold text-neutral-900">
+          Import <span aria-hidden="true">▾</span>
+        </button>
+        <button type="button" disabled>Nom</button>
       </div>
     </div>
+  </div>
 
-    @if (presupuestosFiltrados().length === 0) {
-      <p class="text-sm text-neutral-400">No hi ha pressupostos que coincideixin amb la cerca.</p>
-    } @else {
-      <ul role="list" class="space-y-3">
-        @for (presupuesto of presupuestosFiltrados(); track presupuesto.id) {
-          <li>
-            <app-tarjeta-presupuesto [presupuesto]="presupuesto" (verDetalle)="alSeleccionar(presupuesto)"></app-tarjeta-presupuesto>
-          </li>
-        }
-      </ul>
-    }
-  </section>
-}
+  @if (presupuestosFiltrados().length === 0) {
+    <p class="text-sm text-neutral-400">No hi ha pressupostos que coincideixin amb la cerca.</p>
+  } @else {
+    <ul role="list" class="space-y-3">
+      @for (presupuesto of presupuestosFiltrados(); track presupuesto.id) {
+        <li>
+          <app-tarjeta-presupuesto [presupuesto]="presupuesto"></app-tarjeta-presupuesto>
+        </li>
+      }
+    </ul>
+  }
+</section>
