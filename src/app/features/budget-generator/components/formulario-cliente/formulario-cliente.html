@@ -3,19 +3,24 @@
 
   <form
     class="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_1fr_1fr_auto]"
-    (submit)="alEnviar($event, nombreInput.value, emailInput.value, telefonoInput.value)"
+    (submit)="alEnviar($event)"
   >
     <label for="nombre" class="sr-only">Nom i cognoms</label>
-    <input type="text" id="nombre" name="nombre" autocomplete="name" #nombreInput placeholder="Nom"
-      class="rounded-lg border border-neutral-200 px-4 py-2 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
+    <input type="text" id="nombre" autocomplete="name" [formField]="formularioCliente.nombre" placeholder="Nom" class="rounded-lg border border-neutral-200 px-4 py-2 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
+    @if (formularioCliente.nombre().touched() && formularioCliente.nombre().invalid()) {
+      <p>{{ formularioCliente.nombre().errors()[0].message }}</p>}
+    
 
     <label for="telefono" class="sr-only">Telèfon</label>
-    <input type="tel" id="telefono" name="telefono" autocomplete="tel" #telefonoInput placeholder="Telèfon"
-      class="rounded-lg border border-neutral-200 px-4 py-2 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
+    <input type="tel" id="telefono" autocomplete="tel" [formField]="formularioCliente.telefono" placeholder="Telèfon" class="rounded-lg border border-neutral-200 px-4 py-2 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
+    @if (formularioCliente.telefono().touched() && formularioCliente.telefono().invalid()) {
+      <p>{{ formularioCliente.telefono().errors()[0].message }}</p>}
+
 
     <label for="email" class="sr-only">Email</label>
-    <input type="email" id="email" name="email" autocomplete="email" #emailInput placeholder="Email"
-      class="rounded-lg border border-neutral-200 px-4 py-2 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
+    <input type="email" id="email" autocomplete="email" [formField]="formularioCliente.email" placeholder="Email" class="rounded-lg border border-neutral-200 px-4 py-2 text-sm placeholder:text-neutral-400 focus:border-emerald-500 focus:outline-none">
+    @if (formularioCliente.email().touched() && formularioCliente.email().invalid()) {
+      <p>{{ formularioCliente.email().errors()[0].message }}</p>}
 
     <button type="submit"
       class="rounded-full bg-emerald-600 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-700">
