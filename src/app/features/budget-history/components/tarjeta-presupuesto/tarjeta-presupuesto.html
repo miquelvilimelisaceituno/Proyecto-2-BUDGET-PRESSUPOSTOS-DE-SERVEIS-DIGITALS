@@ -3,9 +3,9 @@
 >
   <div>
     <h3 class="font-bold text-neutral-900">
-      <button type="button" (click)="alHacerClic()" class="cursor-pointer after:absolute after:inset-0">
+      <a [routerLink]="['/presupuesto', presupuesto().id]" class="cursor-pointer after:absolute after:inset-0">
         {{ presupuesto().nombre || 'Client sense nom' }}
-      </button>
+      </a>
     </h3>
     <p class="text-sm text-neutral-400">{{ presupuesto().email }}</p>
     <p class="text-sm text-neutral-400">{{ presupuesto().telefono }}</p>
